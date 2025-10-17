@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="הכירו את גומי דאק - החברה שהופכת כל רחצה לחוויה מהנה. הסיפור שלנו, הערכים שלנו והמחויבות שלנו לאיכות ובטיחות.">
+    <title>אודות - גומי דאק</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: 'acc5dd00-9ee9-4892-9e33-3d4136d23f09',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve session ID
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('click', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand"><a href="/" class="logo-link" aria-label="Home" style="display: inline-block; text-decoration: none; line-height: 0; margin-right: 0; vertical-align: middle;"><img src="assets/logo.webp" alt="גומי דאק" class="logo" style="max-height: 60px; height: auto; width: auto; max-width: 250px; object-fit: contain; background: transparent; image-rendering: crisp-edges;" /></a><span class="brand-title">גומי דאק</span>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/products">המוצרים שלנו</a></li>
+                <li><a href="/about" class="active">אודות</a></li>
+                <li><a href="/contact">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>הסיפור שלנו</h1>
+            <p>כיצד גומי דאק הפכה לשם נרדף לכיף באמבטיה</p>
+        </div>
+    </section>
+
+    <section class="about-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>מי אנחנו?</h2>
+                    <p>גומי דאק נולדה מתוך אהבה לילדים ורצון להפוך כל רגע יומיומי לחוויה מיוחדת. אנחנו מאמינים שזמן האמבטיה לא חייב להיות משימה שגרתית - הוא יכול להיות הרפתקה מרגשת, זמן איכות משפחתי ורגע של שמחה טהורה.</p>
+                    <p>החלום שלנו התחיל כשהבנו שברווז גומי פשוט יכול להפוך רחצה משעממת לחוויה קסומה. מאז, התפתחנו למגוון שלם של מוצרי אמבטיה צבעוניים, יצירתיים ומהנים שמלווים אלפי משפחות בכל רחצה.</p>
+                </div>
+                <div class="story-image">
+                    <img src="assets/business-hero.webp" alt="מוצרי גומי דאק">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <h2>הערכים שלנו</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>איכות ללא פשרות</h3>
+                    <p>אנחנו מתפשרים רק על הטוב ביותר. כל מוצר נבחר בקפידה ועובר בדיקות איכות מחמירות לפני שהוא מגיע לידיים הקטנות של הילדים שלכם.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3>בטיחות מעל הכל</h3>
+                    <p>בטיחות הילדים היא העדיפות הראשונה שלנו. כל המוצרים שלנו עומדים בתקני הבטיחות הבינלאומיים הגבוהים ביותר ועשויים מחומרים בטיחותיים ולא רעילים.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎨</div>
+                    <h3>יצירתיות ועיצוב</h3>
+                    <p>אנחנו מאמינים בכוח של עיצוב טוב. המוצרים שלנו מעוצבים בקפידה כדי לעורר דמיון, לעודד משחק יצירתי ולהביא חיוך לפנים של כל ילד.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💚</div>
+                    <h3>אחריות סביבתית</h3>
+                    <p>אנחנו דואגים לעתיד של הילדים שלכם. לכן אנחנו בוחרים בחומרים ידידותיים לסביבה ועובדים עם ספקים שמחויבים לקיימות.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>שירות אישי</h3>
+                    <p>אנחנו כאן בשבילכם. הצוות שלנו זמין לכל שאלה, עצה או בקשה מיוחדת. השביעות רצון שלכם היא המטרה שלנו.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">✨</div>
+                    <h3>הפיכת השגרה לקסם</h3>
+                    <p>המשימה שלנו היא להפוך רגעים שגרתיים לזיכרונות מיוחדים. כל מוצר שלנו נועד ליצור חוויה שמשפחות שלמות יזכרו באהבה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <h2>המשימה שלנו</h2>
+                <p>להפוך כל זמן אמבטיה לחוויה מהנה, בטוחה ומעשירה עבור ילדים והוריהם. אנחנו מחויבים להביא שמחה, יצירתיות ואיכות לכל בית, ולהיות השותפים המהימנים שלכם בגידול ילדים מאושרים.</p>
+                <div class="mission-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">משפחות מרוצות</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">מוצרים במלאי</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">מחויבות לאיכות</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-section">
+        <div class="container">
+            <h2>למה לבחור בגומי דאק?</h2>
+            <div class="why-choose-grid">
+                <div class="why-card">
+                    <h3>מגוון עצום</h3>
+                    <p>מברווזים קלאסיים ועד צעצועים אינטראקטיביים - יש לנו הכל כדי להפוך כל אמבטיה לחוויה ייחודית</p>
+                </div>
+                <div class="why-card">
+                    <h3>מחירים הוגנים</h3>
+                    <p>איכות פרימיום במחירים שמתאימים לכל משפחה. אנחנו מאמינים שכל ילד ראוי לצעצועים איכותיים</p>
+                </div>
+                <div class="why-card">
+                    <h3>משלוחים מהירים</h3>
+                    <p>הזמנתם? נדאג שהמוצרים יגיעו אליכם במהירות, כי אנחנו יודעים שהילדים שלכם לא יכולים לחכות</p>
+                </div>
+                <div class="why-card">
+                    <h3>ייעוץ מקצועי</h3>
+                    <p>לא בטוחים מה מתאים לגיל של הילד שלכם? הצוות שלנו כאן כדי לייעץ ולעזור לכם לבחור נכון</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>רוצים להצטרף למשפחת גומי דאק?</h2>
+                <p>צרו איתנו קשר ונשמח לעזור לכם למצוא את המוצרים המושלמים</p>
+                <a href="/contact" class="cta-button">צרו קשר</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Legal Footer -->
+    <footer class="legal-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-main">
+            <p>© 2025 גומי דאק. כל הזכויות שמורות.</p>
+            <p class="zappy-attribution">נוצר באמצעות Zappy</p>
+          </div>
+          <div class="footer-social"><a href="[facebook_url]" target="_blank" rel="noopener noreferrer" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
+<a href="[instagram_url]" target="_blank" rel="noopener noreferrer" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+<a href="[whatsapp_url]" target="_blank" rel="noopener noreferrer" aria-label="ווטסאפ"><i class="fab fa-whatsapp"></i></a></div>
+          <div class="footer-legal">
+            <a href="privacy.html" target="_blank" rel="noopener" aria-label="מדיניות פרטיות">
+              מדיניות פרטיות
+            </a>
+            <span class="separator">|</span>
+            <a href="accessibility.html" target="_blank" rel="noopener" aria-label="נגישות">
+              נגישות
+            </a>
+            <span class="separator">|</span>
+            <a href="terms.html" target="_blank" rel="noopener" aria-label="תנאי שימוש">
+              תנאי שימוש
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <a href="tel:[phone_number]" class="phone-float" aria-label="התקשרו אלינו">
+        <i class="fas fa-phone"></i>
+    </a>
+    <a href="https://wa.me/[whatsapp_number]" target="_blank" class="whatsapp-float" aria-label="ווטסאפ" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <div data-integration="accessibility:toolbar"></div>
+    <script src="script.js"></script>
+</body>
+</html>
