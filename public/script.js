@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Helper function to check cookie consent
 function hasConsentFor(category) {
-  if (typeof window.CookieConsent === 'undefined') {
+  if (typeof window.CookieConsent === '') {
     return false; // Default to no consent if cookie consent not loaded
   }
   
@@ -122,11 +122,11 @@ console.log('[Cookie] Cookie consent script loaded - starting initialization...'
   function initCookieConsent() {
     initAttempts++;
     
-    console.log('[Cookie] Cookie consent init attempt', initAttempts, '- CookieConsent available:', typeof window.CookieConsent !== 'undefined');
+    console.log('[Cookie] Cookie consent init attempt', initAttempts, '- CookieConsent available:', typeof window.CookieConsent !== '');
     console.log('[Cookie] Document ready state:', document.readyState);
-    console.log('[Cookie] Window object available:', typeof window !== 'undefined');
+    console.log('[Cookie] Window object available:', typeof window !== '');
     
-    if (typeof window.CookieConsent === 'undefined') {
+    if (typeof window.CookieConsent === '') {
       if (initAttempts < maxAttempts) {
         console.log('[Cookie] CookieConsent not ready, retrying in 100ms...');
         setTimeout(initCookieConsent, 100);
@@ -299,7 +299,7 @@ console.log('[Cookie] Cookie consent script loaded - starting initialization...'
   }
   
   // Additional fallback - try after page load
-  if (typeof window !== 'undefined') {
+  if (typeof window !== '') {
     if (window.addEventListener) {
       window.addEventListener('load', initCookieConsent, { once: true });
     }
@@ -329,3 +329,25 @@ window.onload = function() {
         console.error('❌ Mickidum Accessibility Toolbar initialization failed:', error);
     }
 };
+
+/* Added Component Script */
+
+document.addEventListener('DOMContentLoaded', function() {
+  const getDirectionsBtns = document.querySelectorAll('.get-directions-btn');
+  const mapOverlays = document.querySelectorAll('.map-overlay');
+  
+  getDirectionsBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Replace with your actual address
+      const address = encodeURIComponent('123 Main Street, Your City, State 12345');
+      window.open('https://www.google.com/maps/dir/?api=1&destination=' + address, '_blank');
+    });
+  });
+  
+  mapOverlays.forEach(overlay => {
+    overlay.addEventListener('click', function() {
+      // Can load actual embedded map here
+      alert('Map integration can be added with Google Maps API');
+    });
+  });
+});
