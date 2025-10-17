@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://-acc5dd00.zappy5.app/sitemap.xml
+Sitemap: https://gumi-duck.zappy5.app/sitemap.xml
