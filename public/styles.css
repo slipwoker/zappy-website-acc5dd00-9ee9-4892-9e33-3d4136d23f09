@@ -7,7 +7,7 @@
 body {
     font-family: 'Heebo', 'Segoe UI', Tahoma, sans-serif;
     line-height: 1.6;
-    color: #18181B;
+    color: #212529;
     background: #FFFFFF;
     direction: rtl;
 }
@@ -20,7 +20,7 @@ body {
 
 /* Navigation */
 .navbar {
-    background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+    background: linear-gradient(135deg, #0A9396 0%, #5fb3b5 100%);
     padding: 20px 0;
     position: sticky;
     top: 0;
@@ -63,7 +63,7 @@ body {
     font-weight: 700;
     margin: 0;
     white-space: nowrap;
-    color: #FBBF24;
+    color: #EE6C4D;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -134,7 +134,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, #EE6C4D 0%, #d95d3e 100%);
     padding: 80px 40px;
     min-height: 600px;
     display: flex;
@@ -150,7 +150,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .hero-text h1 {
     font-size: 3.5rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 24px;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
@@ -158,7 +158,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .hero-text p {
     font-size: 1.3rem;
-    color: #18181B;
+    color: #212529;
     margin-bottom: 32px;
     line-height: 1.8;
 }
@@ -178,7 +178,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .cta-button {
     display: inline-block;
-    background: #7C3AED;
+    background: #0A9396;
     color: white;
     padding: 18px 40px;
     text-decoration: none;
@@ -190,7 +190,7 @@ button.mobile-toggle.active span:nth-child(3),
 }
 
 .cta-button:hover {
-    background: #6D28D9;
+    background: #087f82;
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(0, 168, 204, 0.6);
 }
@@ -198,18 +198,18 @@ button.mobile-toggle.active span:nth-child(3),
 .cta-button-secondary {
     display: inline-block;
     background: transparent;
-    color: #7C3AED;
+    color: #0A9396;
     padding: 16px 36px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
     font-size: 1.1rem;
-    border: 3px solid #7C3AED;
+    border: 3px solid #0A9396;
     transition: all 0.3s ease;
 }
 
 .cta-button-secondary:hover {
-    background: #7C3AED;
+    background: #0A9396;
     color: white;
     transform: translateY(-2px);
 }
@@ -223,7 +223,7 @@ button.mobile-toggle.active span:nth-child(3),
 .features h2 {
     text-align: center;
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 60px;
 }
 
@@ -234,7 +234,7 @@ button.mobile-toggle.active span:nth-child(3),
 }
 
 .feature-card {
-    background: linear-gradient(135deg, #FAFAF9 0%, #F5F5F4 100%);
+    background: linear-gradient(135deg, #F8F9FA 0%, #F8F9FA 100%);
     padding: 40px 30px;
     border-radius: 20px;
     text-align: center;
@@ -254,7 +254,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .feature-card h3 {
     font-size: 1.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 16px;
 }
 
@@ -267,13 +267,13 @@ button.mobile-toggle.active span:nth-child(3),
 /* Products Preview */
 .products-preview {
     padding: 80px 40px;
-    background: linear-gradient(135deg, #FAF5FF 0%, #E9D5FF 100%);
+    background: linear-gradient(135deg, #f0fafb 0%, #d4f1f2 100%);
 }
 
 .products-preview h2 {
     text-align: center;
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 60px;
 }
 
@@ -301,7 +301,7 @@ button.mobile-toggle.active span:nth-child(3),
     width: 100%;
     height: 280px;
     overflow: hidden;
-    background: #FAFAF9;
+    background: #F8F9FA;
 }
 
 .product-image img {
@@ -317,7 +317,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .product-card h3 {
     font-size: 1.6rem;
-    color: #7C3AED;
+    color: #0A9396;
     padding: 24px 24px 12px;
 }
 
@@ -341,7 +341,7 @@ button.mobile-toggle.active span:nth-child(3),
 .gallery h2 {
     text-align: center;
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 60px;
 }
 
@@ -373,25 +373,25 @@ button.mobile-toggle.active span:nth-child(3),
 /* CTA Section */
 .cta-section {
     padding: 100px 40px;
-    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, #EE6C4D 0%, #d95d3e 100%);
     text-align: center;
 }
 
 .cta-content h2 {
     font-size: 3rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 24px;
 }
 
 .cta-content p {
     font-size: 1.4rem;
-    color: #18181B;
+    color: #212529;
     margin-bottom: 40px;
 }
 
 /* Page Header */
 .page-header {
-    background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+    background: linear-gradient(135deg, #0A9396 0%, #5fb3b5 100%);
     padding: 80px 40px;
     text-align: center;
     color: white;
@@ -420,7 +420,7 @@ button.mobile-toggle.active span:nth-child(3),
     align-items: center;
     margin-bottom: 80px;
     padding: 40px;
-    background: linear-gradient(135deg, #FAFAF9 0%, #F5F5F4 100%);
+    background: linear-gradient(135deg, #F8F9FA 0%, #F8F9FA 100%);
     border-radius: 20px;
 }
 
@@ -440,7 +440,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .product-showcase-content h2 {
     font-size: 2.5rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 24px;
 }
 
@@ -458,9 +458,9 @@ button.mobile-toggle.active span:nth-child(3),
 
 .product-features li {
     font-size: 1.1rem;
-    color: #18181B;
+    color: #212529;
     padding: 10px 0;
-    border-bottom: 1px solid #D4D4D8;
+    border-bottom: 1px solid #adb5bd;
 }
 
 .product-features li:last-child {
@@ -470,13 +470,13 @@ button.mobile-toggle.active span:nth-child(3),
 /* Safety Section */
 .safety-section {
     padding: 80px 40px;
-    background: linear-gradient(135deg, #FAF5FF 0%, #E9D5FF 100%);
+    background: linear-gradient(135deg, #f0fafb 0%, #d4f1f2 100%);
 }
 
 .safety-section h2 {
     text-align: center;
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 60px;
 }
 
@@ -501,7 +501,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .safety-card h3 {
     font-size: 1.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 16px;
 }
 
@@ -526,7 +526,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .story-text h2 {
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 30px;
 }
 
@@ -546,13 +546,13 @@ button.mobile-toggle.active span:nth-child(3),
 /* Values Section */
 .values-section {
     padding: 80px 40px;
-    background: linear-gradient(135deg, #FAF5FF 0%, #E9D5FF 100%);
+    background: linear-gradient(135deg, #f0fafb 0%, #d4f1f2 100%);
 }
 
 .values-section h2 {
     text-align: center;
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 60px;
 }
 
@@ -583,7 +583,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .value-card h3 {
     font-size: 1.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 16px;
 }
 
@@ -602,7 +602,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .mission-content h2 {
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 30px;
 }
 
@@ -623,7 +623,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .stat-item {
     padding: 30px;
-    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, #EE6C4D 0%, #d95d3e 100%);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -631,26 +631,26 @@ button.mobile-toggle.active span:nth-child(3),
 .stat-number {
     font-size: 3.5rem;
     font-weight: 700;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 10px;
 }
 
 .stat-label {
     font-size: 1.2rem;
-    color: #18181B;
+    color: #212529;
     font-weight: 600;
 }
 
 /* Why Choose Section */
 .why-choose-section {
     padding: 80px 40px;
-    background: linear-gradient(135deg, #FAF5FF 0%, #E9D5FF 100%);
+    background: linear-gradient(135deg, #f0fafb 0%, #d4f1f2 100%);
 }
 
 .why-choose-section h2 {
     text-align: center;
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 60px;
 }
 
@@ -675,7 +675,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .why-card h3 {
     font-size: 1.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 16px;
 }
 
@@ -700,7 +700,7 @@ button.mobile-toggle.active span:nth-child(3),
 .contact-info h2,
 .contact-form-wrapper h2 {
     font-size: 2.5rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 30px;
 }
 
@@ -722,13 +722,13 @@ button.mobile-toggle.active span:nth-child(3),
     gap: 20px;
     align-items: flex-start;
     padding: 20px;
-    background: linear-gradient(135deg, #FAFAF9 0%, #F5F5F4 100%);
+    background: linear-gradient(135deg, #F8F9FA 0%, #F8F9FA 100%);
     border-radius: 15px;
 }
 
 .contact-icon {
     font-size: 2rem;
-    color: #7C3AED;
+    color: #0A9396;
     width: 50px;
     height: 50px;
     display: flex;
@@ -741,7 +741,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .contact-text h3 {
     font-size: 1.4rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 8px;
 }
 
@@ -753,12 +753,12 @@ button.mobile-toggle.active span:nth-child(3),
 }
 
 .contact-text a:hover {
-    color: #7C3AED;
+    color: #0A9396;
 }
 
 /* Contact Form */
 .contact-form {
-    background: linear-gradient(135deg, #FAF5FF 0%, #E9D5FF 100%);
+    background: linear-gradient(135deg, #f0fafb 0%, #d4f1f2 100%);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -771,7 +771,7 @@ button.mobile-toggle.active span:nth-child(3),
 .form-group label {
     display: block;
     font-size: 1.1rem;
-    color: #18181B;
+    color: #212529;
     margin-bottom: 8px;
     font-weight: 600;
 }
@@ -782,7 +782,7 @@ button.mobile-toggle.active span:nth-child(3),
     width: 100%;
     padding: 14px 18px;
     font-size: 1rem;
-    border: 2px solid #D4D4D8;
+    border: 2px solid #adb5bd;
     border-radius: 10px;
     background: white;
     transition: all 0.3s ease;
@@ -793,7 +793,7 @@ button.mobile-toggle.active span:nth-child(3),
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #7C3AED;
+    border-color: #0A9396;
     box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.1);
 }
 
@@ -817,7 +817,7 @@ button.mobile-toggle.active span:nth-child(3),
 .submit-button {
     width: 100%;
     padding: 18px;
-    background: #7C3AED;
+    background: #0A9396;
     color: white;
     border: none;
     border-radius: 50px;
@@ -829,7 +829,7 @@ button.mobile-toggle.active span:nth-child(3),
 }
 
 .submit-button:hover {
-    background: #6D28D9;
+    background: #087f82;
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(0, 168, 204, 0.6);
 }
@@ -837,13 +837,13 @@ button.mobile-toggle.active span:nth-child(3),
 /* FAQ Section */
 .faq-section {
     padding: 80px 40px;
-    background: linear-gradient(135deg, #FAF5FF 0%, #E9D5FF 100%);
+    background: linear-gradient(135deg, #f0fafb 0%, #d4f1f2 100%);
 }
 
 .faq-section h2 {
     text-align: center;
     font-size: 2.8rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 60px;
 }
 
@@ -862,7 +862,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 .faq-item h3 {
     font-size: 1.4rem;
-    color: #7C3AED;
+    color: #0A9396;
     margin-bottom: 16px;
 }
 
@@ -874,7 +874,7 @@ button.mobile-toggle.active span:nth-child(3),
 
 /* Footer */
 footer {
-    background: linear-gradient(135deg, #18181B 0%, #27272A 100%);
+    background: linear-gradient(135deg, #212529 0%, #2C3E50 100%);
     padding: 40px 0;
     color: white;
     text-align: center;
@@ -901,7 +901,7 @@ footer {
 }
 
 .footer-social a:hover {
-    background: #7C3AED;
+    background: #0A9396;
     transform: translateY(-5px);
 }
 
@@ -930,12 +930,12 @@ footer {
     }
     
     .whatsapp-float {
-        background: #10B981;
+        background: #0A9396;
         bottom: 80px;
     }
     
     .phone-float {
-        background: #7C3AED;
+        background: #0A9396;
         bottom: 20px;
     }
     
@@ -999,7 +999,7 @@ footer {
         right: 0;
         width: 100%;
         height: 100vh;
-        background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+        background: linear-gradient(135deg, #0A9396 0%, #5fb3b5 100%);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -1147,12 +1147,12 @@ img, picture, figure {
 
     /* Legal Footer Styles */
     .legal-footer {
-      background-color: linear-gradient(135deg, #18181B 0%, #27272A 100%);
-      color: #A1A1AA;
+      background-color: linear-gradient(135deg, #212529 0%, #2C3E50 100%);
+      color: #6C757D;
       padding: 20px 0;
       margin-top: 40px;
       font-size: 14px;
-      border-top: 3px solid linear-gradient(135deg, #18181B 0%, #27272A 100%);
+      border-top: 3px solid linear-gradient(135deg, #212529 0%, #2C3E50 100%);
     }
 
     .legal-footer .container {
@@ -1195,7 +1195,7 @@ img, picture, figure {
     }
 
     .legal-footer .footer-social a {
-      color: #A1A1AA;
+      color: #6C757D;
       text-decoration: none;
       font-size: 22px;
       transition: color 0.3s ease, transform 0.2s ease;
@@ -1209,13 +1209,13 @@ img, picture, figure {
     }
 
     .legal-footer .footer-social a:hover {
-      color: linear-gradient(135deg, #18181B 0%, #27272A 100%);
+      color: linear-gradient(135deg, #212529 0%, #2C3E50 100%);
       transform: scale(1.15);
       background-color: rgba(255, 255, 255, 0.2);
     }
 
     .legal-footer .footer-social a:focus {
-      outline: 2px solid linear-gradient(135deg, #18181B 0%, #27272A 100%);
+      outline: 2px solid linear-gradient(135deg, #212529 0%, #2C3E50 100%);
       outline-offset: 2px;
       border-radius: 50%;
     }
@@ -1233,25 +1233,25 @@ img, picture, figure {
     }
 
     .legal-footer .footer-legal a {
-      color: linear-gradient(135deg, #18181B 0%, #27272A 100%);
+      color: linear-gradient(135deg, #212529 0%, #2C3E50 100%);
       text-decoration: none;
       transition: color 0.3s ease;
       font-weight: 500;
     }
 
     .legal-footer .footer-legal a:hover {
-      color: #A1A1AA;
+      color: #6C757D;
       text-decoration: underline;
     }
 
     .legal-footer .footer-legal a:focus {
-      outline: 2px solid linear-gradient(135deg, #18181B 0%, #27272A 100%);
+      outline: 2px solid linear-gradient(135deg, #212529 0%, #2C3E50 100%);
       outline-offset: 2px;
       border-radius: 2px;
     }
 
     .legal-footer .separator {
-      color: #71717A;
+      color: #6C757D;
       font-weight: 300;
     }
 
@@ -1341,9 +1341,9 @@ img, picture, figure {
 
 /* Cookie Consent Customizations */
 :root {
-  --cc-btn-primary-bg: #8B5CF6;
-  --cc-btn-primary-border: #8B5CF6;
-  --cc-btn-primary-hover-bg: #6D28D9;
+  --cc-btn-primary-bg: #0A9396;
+  --cc-btn-primary-border: #0A9396;
+  --cc-btn-primary-hover-bg: #087f82;
 }
 
 #cc--main {
@@ -1380,7 +1380,7 @@ img, picture, figure {
 
 /* Basic Accessibility Enhancements */
 :root {
-  --accessibility-focus: #7C3AED;
+  --accessibility-focus: #0A9396;
 }
 
 /* Skip link styles */
@@ -1441,7 +1441,7 @@ img, picture, figure {
 }
 
 .map-placeholder {
-  background: #f0f9ff;
+  background: #f0fafb;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 168, 204, 0.15);
@@ -1460,7 +1460,7 @@ img, picture, figure {
 .get-directions-btn {
   width: 100%;
   padding: 16px 24px;
-  background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+  background: linear-gradient(135deg, #0A9396 0%, #5fb3b5 100%);
   color: white;
   border: none;
   border-radius: 25px;
@@ -1479,7 +1479,7 @@ img, picture, figure {
 .get-directions-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 168, 204, 0.4);
-  background: linear-gradient(135deg, #0097b8 0%, #00c4ef 100%);
+  background: linear-gradient(135deg, #087f82 0%, #0A9396 100%);
 }
 
 .get-directions-btn:active {
